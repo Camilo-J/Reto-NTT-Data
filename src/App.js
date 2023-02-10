@@ -9,8 +9,6 @@ function App() {
       .catch(console.log);
   }, []);
 
-  console.log(users);
-
   return (
     <section className="p-6 container-2xl flex flex-col gap-8">
       <h1 className="text-center text-teal-600 text-4xl font-semibold">
@@ -31,9 +29,12 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => {
+            {users.map((user, index) => {
               return (
-                <tr className="border-b border-teal-500 hover:bg-teal-300/20 ">
+                <tr
+                  key={index}
+                  className="border-b border-teal-500 hover:bg-teal-300/20 "
+                >
                   <td className="px-4 text-gray-700">{user.name.first}</td>
                   <td className="px-4 text-gray-700">{user.name.last}</td>
                   <td className="px-4 text-gray-700">{user.dob.age}</td>
@@ -55,7 +56,11 @@ function App() {
           </tbody>
         </table>
       </div>
-      <a className="self-center w-56 h-12 border-2 border-teal-500 rounded-3xl text-center flex items-center justify-center text-gray-700 transition-all duration-500 hover:shadow-md hover:shadow-teal-500 text-teal-600">
+      <a
+        data={JSON.stringify(users)}
+        className="self-center w-56 h-12 border-2 border-teal-500 rounded-3xl text-center flex items-center justify-center  transition-all duration-500 hover:shadow-md hover:shadow-teal-500 text-teal-600"
+        href="https://randomuser.me/api/?results=15&seed=foobar&format=csv"
+      >
         Download CSV
       </a>
     </section>
