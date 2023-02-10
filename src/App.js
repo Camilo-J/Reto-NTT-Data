@@ -61,7 +61,7 @@ function App() {
                       {user.dob.age}
                     </td>
                     <td className="px-4 text-gray-700 border-y border-teal-500">
-                      {user.gender}
+                      {user.gender === "female" ? "F" : "M"}
                     </td>
                     <td className="px-4 text-gray-700 text-center border-y border-teal-500">
                       {user.email}
