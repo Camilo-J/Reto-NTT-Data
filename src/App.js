@@ -29,30 +29,32 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
-              return (
-                <tr
-                  key={index}
-                  className="border-b border-teal-500 hover:bg-teal-300/20 "
-                >
-                  <td className="px-4 text-gray-700">{user.name.first}</td>
-                  <td className="px-4 text-gray-700">{user.name.last}</td>
-                  <td className="px-4 text-gray-700">{user.dob.age}</td>
-                  <td className="px-4 text-gray-700">{user.gender}</td>
-                  <td className="px-4 text-gray-700 text-center">
-                    {user.email}
-                  </td>
-                  <td className="px-4 text-gray-700">{user.nat}</td>
-                  <td className="p-3">
-                    <img
-                      className="rounded-full"
-                      src={user.picture.thumbnail}
-                      alt="profile"
-                    />
-                  </td>
-                </tr>
-              );
-            })}
+            {users
+              ?.sort((a, b) => a.dob.age - b.dob.age)
+              .map((user, index) => {
+                return (
+                  <tr
+                    key={index}
+                    className="border-b border-teal-500 hover:bg-teal-300/20 "
+                  >
+                    <td className="px-4 text-gray-700">{user.name.first}</td>
+                    <td className="px-4 text-gray-700">{user.name.last}</td>
+                    <td className="px-4 text-gray-700">{user.dob.age}</td>
+                    <td className="px-4 text-gray-700">{user.gender}</td>
+                    <td className="px-4 text-gray-700 text-center">
+                      {user.email}
+                    </td>
+                    <td className="px-4 text-gray-700">{user.nat}</td>
+                    <td className="p-3">
+                      <img
+                        className="rounded-full"
+                        src={user.picture.thumbnail}
+                        alt="profile"
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
